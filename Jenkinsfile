@@ -16,8 +16,8 @@ pipeline{
     }
     stage("sonarscanner"){
       steps{
-        withCredentials([string(credentialsId: 'sonarqube', variable: 'sonarqube')]) {
-          sh 'mvn sonar:sonar'  
+        withSonarQubeEnv(credentialsId: 'urotaxi_sonarqube') {
+         sh 'mvn sonar:sonar'
         }
       }
     }
