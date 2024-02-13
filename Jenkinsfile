@@ -16,8 +16,10 @@ pipeline{
     }
     stage("sonarscanner"){
       steps{
-        withSonarQubeEnv(credentialsId: 'urotaxi_sonarqube') {
-         sh 'mvn sonar:sonar'
+        script{
+          withSonarQubeEnv(credentialsId: 'urotaxi_sonarqube') {
+            sh 'mvn sonar:sonar'
+          }  
         }
       }
     }
