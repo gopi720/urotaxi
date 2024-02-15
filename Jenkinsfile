@@ -28,18 +28,7 @@ pipeline{
         script {
           docker.withRegistry('',docker){
             docker_image = docker.build "gopidharani/urotaxi:2.0"
-          }
-        }
-        docker.withRegistry('',docker){
-          docker_image.push("gopidharani/urotaxi:2.0")
-        }
-      }
-    }
-    stage("docker image push"){
-      steps{
-        script {
-          withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
-            sh 'docker push  gopidharani/urotaxi:2.0'
+            docker_image.push("gopidharani/urotaxi:2.0")
           }
         }
       }
