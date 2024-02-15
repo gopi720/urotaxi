@@ -23,5 +23,23 @@ pipeline{
         }
       }
     }
+    stage("docker image build"){
+      steps{
+        script {
+          withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
+            sh 'docker image build -t gopidharani/urotaxi:2.0 .'
+          }
+        }
+      }
+    }
+    stage("docker image push"){
+      steps{
+        script {
+          withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
+            sh 'docker push  gopidharani/urotaxi:2.0'
+          }
+        }
+      }
+    }
   }
 }
