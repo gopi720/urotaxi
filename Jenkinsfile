@@ -26,7 +26,7 @@ pipeline{
     stage("docker image build"){
       steps{
         script {
-          sh 'sudo docker build -t gopidharani/urotaxi:2.0'
+          sh 'docker build -t gopidharani/urotaxi:2.0'
         }
       }
     }
