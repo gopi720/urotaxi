@@ -26,10 +26,7 @@ pipeline{
     stage("docker image build"){
       steps{
         script {
-          docker.withRegistry('',docker){
-            docker_image = docker.build "gopidharani/urotaxi:2.0"
-            docker_image.push("gopidharani/urotaxi:2.0")
-          }
+          sh 'sudo docker build -t gopidharani/urotaxi:2.0'
         }
       }
     }
