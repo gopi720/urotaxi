@@ -1,4 +1,4 @@
-@library('sharedlib1') _
+@Library('sharedlib1') _
 pipeline{
   agent any
   tools{
@@ -27,7 +27,7 @@ pipeline{
     stage("docker image build"){
       steps{
         script {
-          sh 'docker build -t gopidharani/urotaxi:3.0 .'
+          sh 'docker build -t gopidharani/urotaxi:4.0 .'
         }
       }
     }
@@ -37,7 +37,7 @@ pipeline{
           withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
             sh 'docker login -u gopidharani -p ${docker}'      
           }
-          sh 'docker image push gopidharani/urotaxi:3.0'
+          sh 'docker image push gopidharani/urotaxi:4.0'
         }
       }
     }
