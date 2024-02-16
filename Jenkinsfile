@@ -1,3 +1,4 @@
+@library(sharedlib1) _
 pipeline{
   agent any
   tools{
@@ -6,12 +7,12 @@ pipeline{
   stages{
     stage("git clone"){
       steps{
-        git branch: 'main', url: 'http://github.com/gopi720/urotaxi.git'
+       gitcheckout()
       }
     }
     stage("build project"){
       steps{
-        sh 'mvn clean verify'
+        mavenbuild()
       }
     }
     stage("sonarscanner"){
