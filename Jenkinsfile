@@ -30,5 +30,15 @@ pipeline{
         }
       }
     }
+    stage("docker image push"){
+      steps{
+        script{
+          withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
+            sh 'docker login -u gopidharani -p ${docker}'      
+          }
+          sh 'docker image push gopidharani/urotaxi:2.0'
+        }
+      }
+    }
   }
 }
