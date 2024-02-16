@@ -26,7 +26,7 @@ pipeline{
     stage("docker image build"){
       steps{
         script {
-          sh 'docker build -t gopidharani/urotaxi:2.0 .'
+          sh 'docker build -t gopidharani/urotaxi:3.0 .'
         }
       }
     }
@@ -36,7 +36,7 @@ pipeline{
           withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
             sh 'docker login -u gopidharani -p ${docker}'      
           }
-          sh 'docker image push gopidharani/urotaxi:2.0'
+          sh 'docker image push gopidharani/urotaxi:3.0'
         }
       }
     }
